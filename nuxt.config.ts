@@ -13,9 +13,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  runtimeConfig: {
-    apiSecret: '123',
-    public: {},
-    TOKEN_SUFFIX: 'Bearer'
-  }
 });
