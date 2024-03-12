@@ -1,4 +1,5 @@
 <script setup>
+const inputArtist = ref('')
 const isAuth = useAuth();
 </script>
 <template>
@@ -10,10 +11,10 @@ const isAuth = useAuth();
       <div class="p-1 bg-black rounded-full hover:cursor-pointer">
         <NuxtImg src="/icons/next.png" class="w-6" />
       </div>
-      <div class="group relative rounded-full">
+      <form @submit.prevent="useGetArtist(inputArtist)" class="group relative rounded-full">
         <NuxtImg src="/icons/search.png" class="absolute w-4 top-4 left-4 brightness-75 group-hover:brightness-100" />
-        <input type="text" class="bg-[#292727] rounded-full w-72 h-12 px-12 text-[13px] placeholder:text-[13px] placeholder:text-slate-400 group-hover:ring-2 group-hover:ring-[#353333]" placeholder="What do you want to play?" />
-      </div>
+        <input type="text" v-model="inputArtist" class="bg-[#292727] rounded-full w-72 h-12 px-12 text-[13px] placeholder:text-[13px] placeholder:text-slate-400 group-hover:ring-2 group-hover:ring-[#353333]" placeholder="What do you want to play?" />
+      </form>
     </div>
     <HeaderUserLoggedIn v-if="isAuth" />
     <HeaderUserLoggedOut v-else />

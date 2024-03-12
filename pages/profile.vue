@@ -6,19 +6,18 @@ useHead({
   title: 'profile',
 });
 
-onMounted( async() => {
-    const token = useCookie('Authorization')
-    fetch('https://api.spotify.com/v1/me', {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }).then(res => res.json()).then(result => console.log(result))
-})
+const payload = ref(null);
+onMounted(async () => {
+  const data = await useGetProfile()
+  payload.value = data
+});
 </script>
 
 <template>
   <main>
     <h1>Spotify Profile</h1>
+    <ul>
+      <li>{{ payload?.display_name }}</li>
+    </ul>
   </main>
 </template>
